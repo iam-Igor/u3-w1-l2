@@ -5,7 +5,7 @@ const MyNavbar = ()=> {
 
 return(
 
-<Navbar expand="lg" bg="primary" data-bs-theme="dark">
+<Navbar expand="lg" bg="primary" data-bs-theme="dark" className="sticky-top">
       <Container fluid>
         <Navbar.Brand href="#home">My react-library</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -14,23 +14,26 @@ return(
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#link">About</Nav.Link>
             <NavDropdown title="Browse" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.1">History</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
-                Another action
+                Fantasy
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.3">Horror</NavDropdown.Item>
+             
               <NavDropdown.Item href="#action/3.4">
-                Separated link
+                Romance
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.5">
+                Scifi
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Form className="d-flex offset-lg-8 offset-md-6">
+          <Form className="d-flex offset-lg-8 offset-md-6 ">
        
             <Form.Control
               type="text"
               placeholder="Search"
-              className=" mr-sm-2"
+              className=" mr-sm-2 bg-dark me-2"
             />
          
             <Button type="submit" className="btn-warning">Submit</Button>
