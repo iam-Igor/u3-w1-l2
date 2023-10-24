@@ -22,7 +22,7 @@ const AllTheBooks = ()=> {
         <Container>
           {categories.map((category, index) => (
             <Row key={index}>
-              <h1 className="d-flex justify-content-between">
+              <h1 className="d-flex justify-content-between mt-4">
                 {category.title} <i className="bi bi-caret-down-fill"></i>
               </h1>
               <hr></hr>
