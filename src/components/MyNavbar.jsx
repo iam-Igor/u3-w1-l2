@@ -1,4 +1,4 @@
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown,Form,Button} from "react-bootstrap";
 
 
 const MyNavbar = ()=> {
@@ -10,7 +10,7 @@ return(
         <Navbar.Brand href="#home">My react-library</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav >
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#link">About</Nav.Link>
             <NavDropdown title="Browse" id="basic-nav-dropdown">
@@ -25,6 +25,17 @@ return(
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
+          <Form className="d-flex offset-lg-8 offset-md-6">
+       
+            <Form.Control
+              type="text"
+              placeholder="Search"
+              className=" mr-sm-2"
+            />
+         
+            <Button type="submit" className="btn-warning">Submit</Button>
+         
+            </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>

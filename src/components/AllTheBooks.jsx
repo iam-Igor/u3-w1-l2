@@ -19,7 +19,7 @@ const AllTheBooks = ()=> {
 
 
       return (
-        <Container>
+        <Container fluid>
           {categories.map((category, index) => (
             <Row key={index}>
               <h1 className="d-flex justify-content-between mt-4">
@@ -27,9 +27,9 @@ const AllTheBooks = ()=> {
               </h1>
               <hr></hr>
               {category.source.map((book) => (
-                <Col md={3} xs={6} className="my-2" key={book.asin}>
-                  <Card>
-                    <Card.Img variant="top" src={book.img} />
+                <Col md={2} xs={6}  className="my-2" key={book.asin}>
+                  <Card className="h-100">
+                    <Card.Img variant="top" src={book.img} className="h-75" />
                     <Card.Body>
                       <Card.Title className="fs-6">{book.title}</Card.Title>
                       <Card.Text>Category: {book.category}</Card.Text>
