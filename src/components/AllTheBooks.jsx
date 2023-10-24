@@ -25,6 +25,7 @@ const AllTheBooks = ()=> {
               <h1 className="d-flex justify-content-between">
                 {category.title} <i className="bi bi-caret-down-fill"></i>
               </h1>
+              <hr></hr>
               {category.source.map((book) => (
                 <Col md={3} xs={6} className="my-2" key={book.asin}>
                   <Card>
