@@ -15,6 +15,10 @@ class BookList extends Component {
   render() {
     const { books } = this.props;
 
+    const filteredBooks = books.filter((book) =>
+      book.title.includes(this.state.searchIndex)
+    );
+
     return (
       <Container>
         <Form className="d-flex offset-lg-8 ">
@@ -28,7 +32,7 @@ class BookList extends Component {
         </Form>
 
         <Row>
-          {books.map((book, index) => {
+          {filteredBooks.map((book, index) => {
             return (
               <Col md={3} xs={6} className="my-2" key={index}>
                 <SingleBook book={book} />
