@@ -8,7 +8,7 @@ class SingleBook extends Component {
 
   handleClickcard = () => {
     this.setState({
-      selected: true,
+      selected: !this.state.selected,
     });
   };
 
