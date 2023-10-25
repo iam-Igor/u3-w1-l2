@@ -18,7 +18,7 @@ function App() {
     <div>
       <MyNavbar />
       <Welcome />
-      <BookList books={scifi} />
+      <BookList books={fantasy} />
       {/* <AllTheBooks /> */}
       <MyFooter />
     </div>
