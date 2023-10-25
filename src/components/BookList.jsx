@@ -1,10 +1,18 @@
 import { Component } from "react";
-import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import SingleBook from "./SingleBook";
+
+import history from "../data/history.json";
+import fantasy from "../data/fantasy.json";
+import horror from "../data/horror.json";
+import romance from "../data/romance.json";
+import scifi from "../data/scifi.json";
 
 class BookList extends Component {
   state = {
     searchIndex: "",
+
+    book: scifi,
   };
 
   handleSearch = (prop, value) => {
@@ -12,11 +20,16 @@ class BookList extends Component {
       [prop]: value,
     });
   };
-  render() {
-    const { books } = this.props;
 
-    const filteredBooks = books.filter((book) =>
-      book.title.includes(this.state.searchIndex)
+  handleClick = (prop, value) => {
+    this.setState({
+      [prop]: value,
+    });
+  };
+
+  render() {
+    const filteredBooks = this.state.book.filter((book) =>
+      book.title.toLowerCase().includes(this.state.searchIndex.toLowerCase())
     );
 
     return (
@@ -30,7 +43,18 @@ class BookList extends Component {
             onChange={(e) => this.handleSearch("searchIndex", e.target.value)}
           />
         </Form>
-
+        <Row>
+          <Col>
+            <h1 className="text-center">Select category</h1>
+            <ul className="d-flex list-unstyled justify-content-evenly fw-bold">
+              <li onClick={() => this.handleClick("book", history)}>History</li>
+              <li onClick={() => this.handleClick("book", fantasy)}>Fantasy</li>
+              <li onClick={() => this.handleClick("book", horror)}>Horror</li>
+              <li onClick={() => this.handleClick("book", romance)}>Romance</li>
+              <li onClick={() => this.handleClick("book", scifi)}>Scifi</li>
+            </ul>
+          </Col>
+        </Row>
         <Row>
           {filteredBooks.map((book, index) => {
             return (
@@ -39,7 +63,7 @@ class BookList extends Component {
               </Col>
             );
           })}
-          {books.map((book, index) => {
+          {this.state.book.map((book, index) => {
             return (
               <Col md={3} xs={6} className="my-2" key={index}>
                 <SingleBook book={book} />

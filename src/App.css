@@ -8,3 +8,11 @@ nav {
 footer {
   box-shadow: 0px -8px 7px 0px rgba(0, 0, 0, 0.3);
 }
+
+.container li {
+  background-color: rgb(207, 226, 255);
+  padding: 0.6em;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}

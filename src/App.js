@@ -6,19 +6,12 @@ import Welcome from "./components/Welcome";
 import MyFooter from "./components/MyFooter";
 import BookList from "./components/BookList";
 
-import history from "./data/history.json";
-
-import fantasy from "./data/fantasy.json";
-import horror from "./data/horror.json";
-import romance from "./data/romance.json";
-import scifi from "./data/scifi.json";
-
 function App() {
   return (
     <div>
       <MyNavbar />
       <Welcome />
-      <BookList books={romance} />
+      <BookList />
       {/* <AllTheBooks /> */}
       <MyFooter />
     </div>
