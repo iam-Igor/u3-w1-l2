@@ -33,7 +33,7 @@ class BookList extends Component {
     );
 
     return (
-      <Container>
+      <Container fluid>
         <Form className="d-flex w-50">
           <Form.Control
             type="text"
@@ -57,13 +57,6 @@ class BookList extends Component {
         </Row>
         <Row>
           {filteredBooks.map((book, index) => {
-            return (
-              <Col md={3} xs={6} className="my-2" key={index}>
-                <SingleBook book={book} />
-              </Col>
-            );
-          })}
-          {this.state.book.map((book, index) => {
             return (
               <Col md={3} xs={6} className="my-2" key={index}>
                 <SingleBook book={book} />
