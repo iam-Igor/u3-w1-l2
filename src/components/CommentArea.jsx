@@ -36,7 +36,7 @@ class CommentArea extends Component {
               {
                 comment: singleComm.comment,
                 rate: singleComm.rate,
-                elementId: this.props.book.asin,
+                elementId: singleComm._id,
               },
             ],
             isLoading: false,
@@ -63,7 +63,7 @@ class CommentArea extends Component {
           </div>
         )}
 
-        <CommentList book={this.state.allComments} />
+        <CommentList book={this.state.allComments} refresh={this.getComments} />
         <AddComment book={this.props.book} />
       </Row>
     );

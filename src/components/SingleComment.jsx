@@ -21,9 +21,10 @@ class SingleComment extends Component {
           throw new Error();
         }
       })
+      .then(this.props.refresh)
       .catch((err) => {
         console.log(err);
-        console.log(this.props.element);
+        console.log(typeof this.props.element);
       });
   };
 

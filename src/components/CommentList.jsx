@@ -14,6 +14,7 @@ class CommentList extends Component {
               key={comment.elementId}
               book={comment}
               element={comment.elementId}
+              refresh={this.props.refresh}
             />
           );
         })}
