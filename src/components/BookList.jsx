@@ -7,6 +7,7 @@ import fantasy from "../data/fantasy.json";
 import horror from "../data/horror.json";
 import romance from "../data/romance.json";
 import scifi from "../data/scifi.json";
+import Spinner from "react-bootstrap/Spinner";
 
 class BookList extends Component {
   state = {

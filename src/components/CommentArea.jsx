@@ -2,14 +2,12 @@ import { Component } from "react";
 import { Col, Row } from "react-bootstrap";
 import CommentList from "./CommentList";
 import AddComment from "./AddComment";
+import Spinner from "react-bootstrap/Spinner";
 
 class CommentArea extends Component {
   state = {
-    allComments: {
-      comment: "",
-      rate: "",
-      elementId: this.props.book.asin,
-    },
+    allComments: [],
+    isLoading: true,
   };
 
   getComments = () => {
@@ -34,10 +32,14 @@ class CommentArea extends Component {
         console.log(data, "data");
         data.map((singleComm) => {
           return this.setState({
-            allComments: {
-              comment: singleComm.comment,
-              rate: singleComm.rate,
-            },
+            allComments: [
+              {
+                comment: singleComm.comment,
+                rate: singleComm.rate,
+                elementId: this.props.book.asin,
+              },
+            ],
+            isLoading: false,
           });
         });
       })
@@ -53,6 +55,14 @@ class CommentArea extends Component {
   render() {
     return (
       <Row className="flex-column align-items-center pb-3">
+        {this.state.isLoading && (
+          <div className="d-flex justify-content-center">
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
+        )}
+
         <CommentList book={this.state.allComments} />
         <AddComment book={this.props.book} />
       </Row>
