@@ -4,7 +4,8 @@ class SingleComment extends Component {
   deleteItem = () => {
     fetch(
       "https://striveschool-api.herokuapp.com/api/comments/" +
-        this.props.book.elementId,
+        this.props.element,
+
       {
         method: "DELETE",
         headers: {
@@ -22,6 +23,7 @@ class SingleComment extends Component {
       })
       .catch((err) => {
         console.log(err);
+        console.log(this.props.element);
       });
   };
 

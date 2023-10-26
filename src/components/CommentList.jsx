@@ -9,7 +9,13 @@ class CommentList extends Component {
         <hr></hr>
         <p className="fw-bold">Comments</p>
         {this.props.book.map((comment) => {
-          return <SingleComment key={comment.elementId} book={comment} />;
+          return (
+            <SingleComment
+              key={comment.elementId}
+              book={comment}
+              element={comment.elementId}
+            />
+          );
         })}
       </Col>
     );

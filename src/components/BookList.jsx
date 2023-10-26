@@ -59,7 +59,7 @@ class BookList extends Component {
         <Row>
           {filteredBooks.map((book, index) => {
             return (
-              <Col md={3} xs={6} className="my-2" key={index}>
+              <Col md={2} xs={6} lg={2} className="my-2" key={index}>
                 <SingleBook book={book} />
               </Col>
             );
