@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Col } from "react-bootstrap";
+import { Col, Spinner } from "react-bootstrap";
 import SingleComment from "./SingleComment";
 
 class CommentList extends Component {
@@ -11,6 +11,9 @@ class CommentList extends Component {
           <Col key={this.props.book.elementId} className="col-9">
             <hr></hr>
             <p className="fw-bold">Comments</p>
+            {this.props.isLoading && (
+              <Spinner animation="border" variant="danger" />
+            )}
             {this.props.book.map((comment) => {
               return (
                 <SingleComment

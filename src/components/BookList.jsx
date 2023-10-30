@@ -7,7 +7,6 @@ import fantasy from "../data/fantasy.json";
 import horror from "../data/horror.json";
 import romance from "../data/romance.json";
 import scifi from "../data/scifi.json";
-import Spinner from "react-bootstrap/Spinner";
 import CommentArea from "./CommentArea";
 
 class BookList extends Component {
@@ -16,7 +15,7 @@ class BookList extends Component {
     selected: false,
     book: scifi,
     elementID: "",
-    asin: "",
+    isLoading: false,
   };
 
   handleSearch = (prop, value) => {
@@ -36,6 +35,10 @@ class BookList extends Component {
       selected: !this.state.selected,
       elementID: elemID,
     });
+  };
+
+  changeLoadingState = (param) => {
+    this.setState({ isLoading: param });
   };
 
   render() {
@@ -71,7 +74,12 @@ class BookList extends Component {
             {filteredBooks.map((book, index) => {
               return (
                 <Col md={3} xs={6} lg={3} className="my-2" key={index}>
-                  <SingleBook book={book} selected={this.changeSelect} />
+                  <SingleBook
+                    book={book}
+                    selected={this.changeSelect}
+                    isLoading={this.changeLoadingState}
+                    loadingState={this.state.isLoading}
+                  />
                 </Col>
               );
             })}
@@ -80,6 +88,8 @@ class BookList extends Component {
           <CommentArea
             book={this.state.elementID}
             chosenBook={this.state.book}
+            elementId={this.state.elementID}
+            isLoading={this.state.isLoading}
           />
         </Container>
       </Container>

@@ -58,12 +58,28 @@ class CommentArea extends Component {
   render() {
     return (
       <Row className="flex-column align-items-center pb-3 w-25">
-        <CommentList
-          book={this.state.allComments}
-          refresh={this.getComments}
-          thingsToShow={this.props.book}
-        />
-        <AddComment book={this.props.book} refresh={this.getComments} />
+        {this.props.elementId && (
+          <>
+            {" "}
+            <CommentList
+              book={this.state.allComments}
+              chosenBook={this.props.chosenBook}
+              refresh={this.getComments}
+              thingsToShow={this.props.book}
+              isLoading={this.state.isLoading}
+            />
+            <AddComment book={this.props.book} refresh={this.getComments} />
+          </>
+        )}
+        {this.props.elementId === "" && (
+          <>
+            <Col className="text-center ">
+              <h3>Comments</h3>
+              <p className="fw-bold">No comments here</p>
+              <p>Select a book to see comments and add yours</p>
+            </Col>
+          </>
+        )}
       </Row>
     );
   }

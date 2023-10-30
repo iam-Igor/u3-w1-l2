@@ -23,6 +23,7 @@ class SingleBook extends Component {
             variant="success"
             onClick={() => {
               this.handleClickcard();
+
               this.props.selected(this.props.book.asin);
             }}
           >
