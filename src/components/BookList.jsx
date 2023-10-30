@@ -16,6 +16,7 @@ class BookList extends Component {
     selected: false,
     book: scifi,
     elementID: "",
+    asin: "",
   };
 
   handleSearch = (prop, value) => {
@@ -70,11 +71,7 @@ class BookList extends Component {
             {filteredBooks.map((book, index) => {
               return (
                 <Col md={3} xs={6} lg={3} className="my-2" key={index}>
-                  <SingleBook
-                    book={book}
-                    selected={this.changeSelect}
-                    asin={this.state.elementID}
-                  />
+                  <SingleBook book={book} selected={this.changeSelect} />
                 </Col>
               );
             })}

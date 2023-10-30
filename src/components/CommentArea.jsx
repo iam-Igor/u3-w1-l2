@@ -63,7 +63,7 @@ class CommentArea extends Component {
           refresh={this.getComments}
           thingsToShow={this.props.book}
         />
-        <AddComment book={this.props.chosenBook} refresh={this.getComments} />
+        <AddComment book={this.props.book} refresh={this.getComments} />
       </Row>
     );
   }

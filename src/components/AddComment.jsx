@@ -7,9 +7,20 @@ class AddComment extends Component {
     allComments: {
       comment: "",
       rate: "",
-      elementId: this.props.book.asin,
+      elementId: this.props.book,
     },
   };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.book !== this.props.book) {
+      this.setState({
+        allComments: {
+          ...this.state.allComments,
+          elementId: this.props.book,
+        },
+      });
+    }
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
