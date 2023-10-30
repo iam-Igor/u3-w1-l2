@@ -5,20 +5,25 @@ import SingleComment from "./SingleComment";
 class CommentList extends Component {
   render() {
     return (
-      <Col key={this.props.book.elementId} className="col-9">
-        <hr></hr>
-        <p className="fw-bold">Comments</p>
-        {this.props.book.map((comment) => {
-          return (
-            <SingleComment
-              key={comment.elementId}
-              book={comment}
-              element={comment.elementId}
-              refresh={this.props.refresh}
-            />
-          );
-        })}
-      </Col>
+      <>
+        {" "}
+        {this.props.thingsToShow && (
+          <Col key={this.props.book.elementId} className="col-9">
+            <hr></hr>
+            <p className="fw-bold">Comments</p>
+            {this.props.book.map((comment) => {
+              return (
+                <SingleComment
+                  key={comment.elementId}
+                  book={comment}
+                  element={comment.elementId}
+                  refresh={this.props.refresh}
+                />
+              );
+            })}
+          </Col>
+        )}
+      </>
     );
   }
 }

@@ -8,12 +8,14 @@ import horror from "../data/horror.json";
 import romance from "../data/romance.json";
 import scifi from "../data/scifi.json";
 import Spinner from "react-bootstrap/Spinner";
+import CommentArea from "./CommentArea";
 
 class BookList extends Component {
   state = {
     searchIndex: "",
-
+    selected: false,
     book: scifi,
+    elementID: "",
   };
 
   handleSearch = (prop, value) => {
@@ -25,6 +27,13 @@ class BookList extends Component {
   handleClick = (prop, value) => {
     this.setState({
       [prop]: value,
+    });
+  };
+
+  changeSelect = (elemID) => {
+    this.setState({
+      selected: !this.state.selected,
+      elementID: elemID,
     });
   };
 
@@ -56,15 +65,26 @@ class BookList extends Component {
             </ul>
           </Col>
         </Row>
-        <Row>
-          {filteredBooks.map((book, index) => {
-            return (
-              <Col md={2} xs={6} lg={2} className="my-2" key={index}>
-                <SingleBook book={book} />
-              </Col>
-            );
-          })}
-        </Row>
+        <Container fluid className="flex-row d-flex ">
+          <Row className="w-75">
+            {filteredBooks.map((book, index) => {
+              return (
+                <Col md={3} xs={6} lg={3} className="my-2" key={index}>
+                  <SingleBook
+                    book={book}
+                    selected={this.changeSelect}
+                    asin={this.state.elementID}
+                  />
+                </Col>
+              );
+            })}
+          </Row>
+
+          <CommentArea
+            book={this.state.elementID}
+            chosenBook={this.state.book}
+          />
+        </Container>
       </Container>
     );
   }

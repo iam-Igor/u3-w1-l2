@@ -12,8 +12,7 @@ class CommentArea extends Component {
 
   getComments = () => {
     fetch(
-      "https://striveschool-api.herokuapp.com/api/comments/" +
-        this.props.book.asin,
+      "https://striveschool-api.herokuapp.com/api/comments/" + this.props.book,
       {
         headers: {
           Authorization:
@@ -29,18 +28,16 @@ class CommentArea extends Component {
         }
       })
       .then((data) => {
-        console.log(data, "data");
-        data.map((singleComm) => {
-          return this.setState({
-            allComments: [
-              {
-                comment: singleComm.comment,
-                rate: singleComm.rate,
-                elementId: singleComm._id,
-              },
-            ],
-            isLoading: false,
-          });
+        console.log(data);
+        const comments = data.map((singleComm) => ({
+          comment: singleComm.comment,
+          rate: singleComm.rate,
+          elementId: singleComm._id,
+        }));
+
+        this.setState({
+          allComments: comments,
+          isLoading: false,
         });
       })
       .catch((err) => {
@@ -52,19 +49,21 @@ class CommentArea extends Component {
     this.getComments();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.book !== this.props.book) {
+      this.getComments();
+    }
+  }
+
   render() {
     return (
-      <Row className="flex-column align-items-center pb-3">
-        {this.state.isLoading && (
-          <div className="d-flex justify-content-center">
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          </div>
-        )}
-
-        <CommentList book={this.state.allComments} refresh={this.getComments} />
-        <AddComment book={this.props.book} />
+      <Row className="flex-column align-items-center pb-3 w-25">
+        <CommentList
+          book={this.state.allComments}
+          refresh={this.getComments}
+          thingsToShow={this.props.book}
+        />
+        <AddComment book={this.props.chosenBook} refresh={this.getComments} />
       </Row>
     );
   }

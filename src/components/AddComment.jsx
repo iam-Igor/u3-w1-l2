@@ -14,7 +14,7 @@ class AddComment extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("form inviato");
+    console.log(this.props.book);
 
     fetch("https://striveschool-api.herokuapp.com/api/comments/", {
       method: "POST",
@@ -38,6 +38,7 @@ class AddComment extends Component {
           throw new Error();
         }
       })
+      .then(this.props.refresh)
       .catch((err) => {
         console.log("errore nel salvataggio", err);
       });

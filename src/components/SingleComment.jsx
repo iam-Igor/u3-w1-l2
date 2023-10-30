@@ -32,7 +32,7 @@ class SingleComment extends Component {
     return (
       <div className="comments-container d-flex justify-content-between align-items-center">
         <p className="m-0">
-          {this.props.book.comment} | Rating:{this.props.book.rate}
+          {this.props.book.comment} | Rating: {this.props.book.rate}
         </p>
         <i className="bi bi-trash3" onClick={this.deleteItem}></i>
       </div>
